@@ -43,7 +43,7 @@ inquirer
   
   <body class="container grey darken-3>
       <div class="row">
-        <div class="col s12 m6">
+        <div class="col s12 m6 l3">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">Your Information</span>
