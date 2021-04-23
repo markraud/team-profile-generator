@@ -12,45 +12,70 @@ function init() {
   //get  manager information
   function makeManager() {
     inquirer
-  .prompt([
-    {
-      type: 'input',
-      message: 'Enter team manager\'s name.',
-      name: 'mgrName',
-    },
-    {
-      type: 'input',
-      message: 'Enter team manager\'s employee ID.',
-      name: 'mgrId',
-    },
-    {
-      type: 'input',
-      message: 'Enter team manager\'s email address.',
-      name: 'mgrEmail',
-    },
-    {
-      type: 'input',
-      message: 'Enter team manager\'s office number.',
-      name: 'mgrOfficeNum',
-    },
-  ])
-  .then((response) =>{
+      .prompt([
+        {
+          type: 'input',
+          message: 'Enter team manager\'s name.',
+          name: 'mgrName',
+        },
+        {
+          type: 'input',
+          message: 'Enter team manager\'s employee ID.',
+          name: 'mgrId',
+        },
+        {
+          type: 'input',
+          message: 'Enter team manager\'s email address.',
+          name: 'mgrEmail',
+        },
+        {
+          type: 'input',
+          message: 'Enter team manager\'s office number.',
+          name: 'mgrOfficeNum',
+        },
+      ])
+      .then((response) => {
+        console.log(response.mgrName, response.mgrId, response.mgrEmail, response.mgrOfficeNum);
+        teamMembers.push(response.mgrName, response.mgrId, response.mgrEmail, response.mgrOfficeNum);
+        console.log(teamMembers);
 
-  const{mgrName,mgrId,mgrEmail,mgrOfficeNum} = response  // destructuring the response 
+        // call makeTeam function
+        makeTeam();
 
-  const manager = new Manager(mgrName, mgrId, mgrEmail, mgrOfficeNum);
-  teamMembers.push(manager);
 
-  // call makeTeam function
-  makeTeam();
-    //use switch statement
-
-  });
+      });
   }
 
   function makeTeam() {
-    console.log("inside the function");
+    //inquirer to ask if its an engineer or intern
+    inquirer
+      .prompt([
+        {
+          type: 'list',
+          choices: ["Engineer", "Intern", "Team is complete. Quit"],
+          message: 'Would you like to add another team member? Select type or quit.',
+          name: 'memberAdd',
+        },
+      ])
+      .then((response) => {
+        // console.log(response);
+        memType = response.memberAdd;
+        // console.log(memType);
+        //use switch statement to determine if its an engineer or intern
+        switch(memType){
+          case "Engineer":
+            console.log("Type is Engineer");
+            break;
+          case "Intern":
+            console.log("Type is Intern");
+            break;
+          default:
+            console.log("Default...put quit here.");
+          }
+      });
   }
+
+
   //get engineer information
 
   //get intern information
