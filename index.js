@@ -65,9 +65,11 @@ function init() {
         switch(memType){
           case "Engineer":
             console.log("Type is Engineer");
+            makeEngineer();
             break;
           case "Intern":
             console.log("Type is Intern");
+            makeIntern();
             break;
           default:
             console.log("Default...put quit here.");
@@ -75,8 +77,40 @@ function init() {
       });
   }
 
-
   //get engineer information
+  function makeEngineer() {
+    inquirer
+      .prompt([
+        {
+          type: 'input',
+          message: 'Enter Engineer\'s name.',
+          name: 'engName',
+        },
+        {
+          type: 'input',
+          message: 'Enter Engineer\'s ID.',
+          name: 'engId',
+        },
+        {
+          type: 'input',
+          message: 'Enter Engineer\'s email.',
+          name: 'engEmail',
+        },
+        {
+          type: 'input',
+          message: 'Enter Engineer\'s GitHub ID.',
+          name: 'gitHubId',
+        },
+      ])
+      .then((response) => {
+        console.log("Response from makeEngineer");
+        console.log(response);
+        // teamMembers.push()
+
+
+      });
+
+  }
 
   //get intern information
 
