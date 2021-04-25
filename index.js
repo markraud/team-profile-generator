@@ -5,6 +5,8 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const teamHtml = require('./src/template');
+
 const teamMembers = [];
 
 // wrap everything inside of a init function
@@ -35,9 +37,8 @@ function init() {
         },
       ])
       .then((response) => {
-        console.log(response.mgrName, response.mgrId, response.mgrEmail, response.mgrOfficeNum);
-        teamMembers.push(response.mgrName, response.mgrId, response.mgrEmail, response.mgrOfficeNum);
-        console.log(teamMembers);
+        teamMembers.push(new Manager(response.mgrName, response.mgrId, response.mgrEmail, response.mgrOfficeNum));
+        // console.log(teamMembers);
 
         // call makeTeam function
         makeTeam();
@@ -52,7 +53,7 @@ function init() {
       .prompt([
         {
           type: 'list',
-          choices: ["Engineer", "Intern", "Team is complete. Quit"],
+          choices: ["Engineer", "Intern", "Quit"],
           message: 'Would you like to add another team member? Select type or quit.',
           name: 'memberAdd',
         },
@@ -64,15 +65,15 @@ function init() {
         //use switch statement to determine if its an engineer or intern
         switch(memType){
           case "Engineer":
-            console.log("Type is Engineer");
             makeEngineer();
             break;
           case "Intern":
-            console.log("Type is Intern");
             makeIntern();
             break;
+          case "quit":
+            writeHtml();
           default:
-            console.log("Default...put quit here.");
+            writeHtml();
           }
       });
   }
@@ -103,9 +104,8 @@ function init() {
         },
       ])
       .then((response) => {
-        console.log("Response from makeEngineer");
-        console.log(response);
-        // teamMembers.push()
+        teamMembers.push(new Engineer(response.engName, response.engId, response.engEmail, response.gitHubId));
+        makeTeam();
 
 
       });
@@ -113,10 +113,47 @@ function init() {
   }
 
   //get intern information
+  function makeIntern() {
+    inquirer
+      .prompt([
+        {
+          type: 'input',
+          message: 'Enter Intern\'s name.',
+          name: 'internName',
+        },
+        {
+          type: 'input',
+          message: 'Enter Intern\'s ID.',
+          name: 'internId',
+        },
+        {
+          type: 'input',
+          message: 'Enter Intern\'s email.',
+          name: 'internEmail',
+        },
+        {
+          type: 'input',
+          message: 'Enter Intern\'s school.',
+          name: 'internSchool',
+        },
+      ])
+      .then((response) => {
+        // console.log("Response from makeIntern");
+        // console.log(response);
+        teamMembers.push(new Intern(response.internName, response.internId, response.internEmail, response.internSchool));
+        makeTeam();
+      });
+
+  }
 
   // create html team file
-  // fs.writeFile("index.html", ,  (err) =>
-  // err ? console.error(err) : console.log('Success!'))
+  function writeHtml() {
+    // console.log("this is where html goes");
+    // console.log(teamMembers);
+    fs.writeFile("index.html", `${teamHtml}` ,  (err) =>
+    err ? console.error(err) : console.log('Success!'))
+  }
+
 
   makeManager();
 }
