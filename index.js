@@ -148,12 +148,12 @@ function init() {
 
   // create html team file
   function writeHtml() {
-    // console.log("this is where html goes");
-    // console.log(teamMembers);
-    fs.writeFile("index.html", `${teamHtml}` ,  (err) =>
-    err ? console.error(err) : console.log('Success!'))
+    teamHtml(teamMembers);
+    console.log(teamHtml);
+    
+    // fs.writeFile("index.html", `${teamHtml}` ,  (err) =>
+    // err ? console.error(err) : console.log('Success!'))
   }
-
 
   makeManager();
 }
