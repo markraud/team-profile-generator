@@ -13,7 +13,7 @@ describe("Employee", () => {
   describe("getId", () => {
     // test getId for employee class
     it("should return the name that is entered as employee", () => {
-      const id = "Mark";
+      const id = "1";
       const newEmp = new Employee("Mark", id, "mark@email.com");
       result = newEmp.getId()
       expect(result).toBe(id);
