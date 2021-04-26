@@ -27,6 +27,7 @@ let teamString1 = `
 let teamString2 = `
 </div>
 </div>
+</div>
 <!-- JavaScript, jquery and materialize js links -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -53,7 +54,7 @@ function createTeamHtml(members){
         <ul class="collection">
           <li class="collection-item black-text">Name: ${element.getName()}</li>
             <li class="collection-item black-text">id: ${element.getId()}</li>
-            <li class="collection-item black-text">email: ${element.getEmail()}</li>
+            <li class="collection-item black-text"><a href="mailto:${element.getEmail()}">${element.getEmail()}</a></li>
             <li class="collection-item black-text">office num: ${element.getOfficeNumber()}</li>
         </ul>
       </div>
@@ -75,8 +76,8 @@ function createTeamHtml(members){
         <ul class="collection">
           <li class="collection-item black-text">Name: ${element.getName()}</li>
             <li class="collection-item black-text">id: ${element.getId()}</li>
-            <li class="collection-item black-text">email: ${element.getEmail()}</li>
-            <li class="collection-item black-text">GitHub: ${element.getGithub()}</li>
+            <li class="collection-item black-text"><a href="mailto:${element.getEmail()}">${element.getEmail()}</a></li>
+            <li class="collection-item black-text">GitHub:<a href="https://github.com/${element.getGithub()}"</a>${element.getGithub()}</li>
         </ul>
       </div>
     </div>
@@ -92,11 +93,11 @@ function createTeamHtml(members){
       intern = `
       <div class="col s10 m4 l3">
       <div class="card-panel small blue white-text">
-        <span class="card-title">Intern</span>
+        <span class="card-title white-text">Intern</span>
         <ul class="collection">
           <li class="collection-item black-text">Name: ${element.getName()}</li>
             <li class="collection-item black-text">id: ${element.getId()}</li>
-            <li class="collection-item black-text">email: ${element.getEmail()}</li>
+            <li class="collection-item black-text"><a href="mailto:${element.getEmail()}">${element.getEmail()}</a></li>
             <li class="collection-item black-text">school: ${element.getSchool()}</li>
         </ul>
       </div>

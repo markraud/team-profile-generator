@@ -23,12 +23,14 @@
 
   ## Usage 
   A manager will follow prompts to enter their name, id, email and office number.  Then they will be given a choice of adding an engineer or intern. After completing the engineer or inter's information the application will continue to ask the same question until the manager chooses "quit". When that is choosen a index.html file will be created in the root of the app that displays the team's information.  
- 
+
 ### Walkthrough Video
 [https://google.com](https://google.com)
 
+### Sample Index file
+[https://drive.google.com/file/d/12bhBfsZYBHfvKKf_X5PJEhFqyZXFFD1N/view?usp=sharing](https://drive.google.com/file/d/12bhBfsZYBHfvKKf_X5PJEhFqyZXFFD1N/view?usp=sharing)
 
-
+### Screenshot of output
 ![Screenshot](./Sample_screenshot_team_gen.png "Screenshot")
 
 
