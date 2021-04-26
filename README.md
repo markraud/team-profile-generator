@@ -19,10 +19,14 @@
   * [Questions](#questions)
 
   ## Installation 
-  You will need to be running node.js.  Inquirer and Jest will also need to be installed and initialized. 
+  1) Install "Node.js" 2) Create a package.json file by running "npm init -y in your repository 3) Install inquirer and add it to your list of dependencies by running "npm i inquirer --save".  Jest will need to be installed and initialized to run testing('npm i jest').  
 
   ## Usage 
   A manager will follow prompts to enter their name, id, email and office number.  Then they will be given a choice of adding an engineer or intern. After completing the engineer or inter's information the application will continue to ask the same question until the manager chooses "quit". When that is choosen a index.html file will be created in the root of the app that displays the team's information.  
+ 
+### Walkthrough Video
+[https://google.com](https://google.com)
+
 
 
 ![Screenshot](./Sample_screenshot_team_gen.png "Screenshot")
